@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * @author João Robson 12/08/2023
  */
+@RestController
+@RequestMapping("/project")
 public class ProjectController {
     @Autowired
     private ProjectService projectService;

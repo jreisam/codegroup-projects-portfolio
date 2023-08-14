@@ -12,4 +12,12 @@ public class ProjectMemberDto {
     private Long idPessoa;
     private boolean funcionario;
 
+    @Override
+    public String toString() {
+        return "ProjectMemberDto{" +
+                "idProjeto=" + idProjeto +
+                ", idPessoa=" + idPessoa +
+                ", funcionario=" + funcionario +
+                '}';
+    }
 }
