@@ -1,5 +1,7 @@
 package br.com.codegroup.portfolio.service;
 
+import br.com.codegroup.portfolio.enums.ProjectStatusEnum;
+import br.com.codegroup.portfolio.model.Person;
 import br.com.codegroup.portfolio.model.Project;
 import br.com.codegroup.portfolio.repository.PersonRepository;
 import br.com.codegroup.portfolio.repository.ProjectRepository;
@@ -54,8 +56,23 @@ public class ProjectServiceImpl implements ProjectService {
         return updatedProject;
     }
 
+    @Override
     public void deleteProject(Long projectId) {
+        Project existingProject = projectRepository.findById(projectId).get();
+        if (existingProject.getStatus() == ProjectStatusEnum.INICIADO ||
+            existingProject.getStatus() == ProjectStatusEnum.EM_ANDAMENTO ||
+            existingProject.getStatus() == ProjectStatusEnum.ENCERRADO) {
+            return;
+        }
         projectRepository.deleteById(projectId);
+    }
+
+    @Override
+    public Project addMemberToProject(Long personId, Long projectId) {
+        Person existingPerson = personRepository.findById(personId).get();
+        Project existingProject = projectRepository.findById(projectId).get();
+        // TODO: atrelar pessoa a projeto
+        return null;
     }
 
 }

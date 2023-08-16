@@ -32,9 +32,8 @@ public class Project extends BaseModel {
     @Column(length = 5000)
     private String descricao;
     @ManyToOne
-    @JoinColumn(name = "idgerente", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "projetoIdGerente", referencedColumnName = "id", nullable = false)
     private Person gerente;
-    // private Long idGerente;
     @Enumerated
     @Column(length = 45)
     private ProjectStatusEnum status;

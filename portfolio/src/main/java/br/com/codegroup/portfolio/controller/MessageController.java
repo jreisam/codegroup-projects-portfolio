@@ -8,6 +8,8 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 /**
  * @author João Robson 12/08/2023
@@ -26,26 +28,26 @@ public class MessageController {
 
 
     @PostMapping("/teste")
-    public String sendMessage(@RequestBody ProjectMemberDto dto) {
+    public String sendMessage(@RequestBody String msg) {
 
         try {
-            kafkaTemplate.send(AppConstants.TOPIC_TESTE, dto);
+            kafkaTemplate.send(AppConstants.TOPIC_TESTE, msg);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "json message sent successfully";
+        return "msg sent";
     }
 
 
     @PostMapping("/portfolio/membro")
-    public String newProjectMember(@RequestBody ProjectMemberDto dto) {
+    public String newProjectMember(@Valid @RequestBody ProjectMemberDto dto) {
         try {
             kafkaTemplate.send(AppConstants.TOPIC_NOVO_MEMBRO, dto);
-//  TODO: ASYNC           this.newMemberAsync(dto, AppConstants.TOPIC_NOVO_MEMBRO);
+            //  TODO: ASYNC
+            //   this.newMemberAsync(dto, AppConstants.TOPIC_NOVO_MEMBRO);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("novo membro $x salvo com sucesso ao projeto $y");
         return "";
     }
 

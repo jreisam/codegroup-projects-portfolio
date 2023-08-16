@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "49d387b1-8856-4666-9c58-d01b456c582a",
+		"name": "Portfolio [Codegroup]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27709675"
+	},
+	"item": [
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "/person GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/person?id=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"person"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/person LIST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/person"
+					},
+					"response": []
+				},
+				{
+					"name": "/person CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cpf\": \"88888877777\",\r\n  \"dataNascimento\": \"2023-08-16T00:13:49.316Z\",\r\n  \"funcionario\": true,\r\n  \"nome\": \"Roberto\",\r\n  \"projetos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/person"
+					},
+					"response": []
+				},
+				{
+					"name": "/person EDIT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"888888888888\",\r\n    \"dataNascimento\": \"2023-08-16T00:13:49.316Z\",\r\n    \"funcionario\": false,\r\n    \"nome\": \"João Robson\",\r\n    \"projetos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/person/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/person DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/person/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projeto",
+			"item": [
+				{
+					"name": "/project LIST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/project"
+					},
+					"response": []
+				},
+				{
+					"name": "/project CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gerente\": { \"id\": 1 },\r\n    \"dataFim\": \"2023-08-16T00:13:49.316Z\",\r\n    \"dataInicio\": \"2023-08-16T00:13:49.316Z\",\r\n    \"dataPrevisaoFim\": \"2023-08-16T00:13:49.316Z\",\r\n    \"descricao\": \"Projeto criado junto ao Person\",\r\n    \"nome\": \"Projeto Xis\",\r\n    \"orcamento\": 100,\r\n    \"risco\": \"RISCO_ALTO\",\r\n    \"status\": \"ANALISE_APROVADA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/project"
+					},
+					"response": []
+				},
+				{
+					"name": "/project GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/project?id=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"project"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/project EDIT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"888888888888\",\r\n    \"dataNascimento\": \"2023-08-16T00:13:49.316Z\",\r\n    \"funcionario\": false,\r\n    \"nome\": \"João Robson\",\r\n    \"projetos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/project/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/project DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/project/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "/message/teste",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"ping, pong!\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/message/teste"
+					},
+					"response": []
+				},
+				{
+					"name": "/portfolio/membro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idProjeto\": 1,\r\n    \"idPessoa\": 1,\r\n    \"funcionario\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/message/portfolio/membro"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

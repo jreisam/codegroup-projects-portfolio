@@ -21,11 +21,11 @@ public class Person extends BaseModel {
     @Column(nullable = false)
     private String nome;
     private Date dataNascimento;
-    @Column(length = 14)
+    @Column(length = 14, unique = true)
     private String cpf;
     private boolean funcionario;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "membros",
             joinColumns = @JoinColumn(name = "person_id"),

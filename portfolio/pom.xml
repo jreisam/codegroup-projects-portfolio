@@ -101,16 +101,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <addResources>true</addResources>
                     <mainClass>br.com.codegroup.portfolio.Application</mainClass>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
-
 
 </project>

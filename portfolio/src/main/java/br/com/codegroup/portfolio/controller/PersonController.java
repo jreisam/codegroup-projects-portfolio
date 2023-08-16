@@ -2,7 +2,6 @@ package br.com.codegroup.portfolio.controller;
 
 import br.com.codegroup.portfolio.model.Person;
 import br.com.codegroup.portfolio.service.PersonService;
-import br.com.codegroup.portfolio.service.PersonService;
 import br.com.codegroup.portfolio.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

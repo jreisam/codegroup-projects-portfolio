@@ -21,8 +21,11 @@ public class Consumer {
     public void receivedMessage(ProjectMemberDto message) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = mapper.writeValueAsString(message);
-        logger.info("Json message received using Kafka listener " + jsonString);
+        logger.info("message received using Kafka listener " + jsonString);
 
         // TODO: verifica se a pessoa é funcionario (funcionario=true) e então salvar o novo membro ao projeto informado (puxar o PersonService)
+
+        logger.info("novo membro $x salvo com sucesso ao projeto $y");
+
     }
 }

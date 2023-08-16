@@ -21,7 +21,6 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseModel implements Serializable {
 
-    // TODO: verificar necessidade do @Serial
     @NonNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
