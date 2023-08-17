@@ -24,7 +24,7 @@ public class Project extends BaseModel {
 
 // nome, data de início, gerente responsável, previsão de término, data real de término, orçamento total, descrição e status.
 
-    @Column(length = 200, nullable = false)
+    @Column(length = 200, nullable = false, unique = true)
     private String nome;
     private Date dataInicio;
     private Date dataPrevisaoFim;
@@ -32,7 +32,7 @@ public class Project extends BaseModel {
     @Column(length = 5000)
     private String descricao;
     @ManyToOne
-    @JoinColumn(name = "projetoIdGerente", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "projetoIdGerente", referencedColumnName = "id", nullable = true)
     private Person gerente;
     @Enumerated
     @Column(length = 45)
@@ -41,7 +41,6 @@ public class Project extends BaseModel {
     @Column(length = 45)
     private ProjectRiskEnum risco;
     private Float orcamento;
-    @JsonIgnore
     @ManyToMany(mappedBy = "projetos")
     private List<Person> pessoas;
 

@@ -21,6 +21,4 @@ public interface ProjectService {
     Project updateProject(Project project);
     void deleteProject(Long projectId);
 
-    Project addMemberToProject(Long personId, Long projectId);
-
 }
