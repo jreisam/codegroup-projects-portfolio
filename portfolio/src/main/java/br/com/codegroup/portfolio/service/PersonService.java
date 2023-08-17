@@ -1,5 +1,6 @@
 package br.com.codegroup.portfolio.service;
 
+import br.com.codegroup.portfolio.dto.ProjectMemberDto;
 import br.com.codegroup.portfolio.model.Person;
 import br.com.codegroup.portfolio.model.Project;
 
@@ -15,5 +16,7 @@ public interface PersonService {
     List<Person> getAllPersons();
     Person updatePerson(Person person);
     void deletePerson(Long personId);
+
+    Person addPersonToProject(ProjectMemberDto projectMemberDto);
 
 }

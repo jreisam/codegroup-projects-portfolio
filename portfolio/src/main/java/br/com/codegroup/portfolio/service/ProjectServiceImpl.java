@@ -67,12 +67,5 @@ public class ProjectServiceImpl implements ProjectService {
         projectRepository.deleteById(projectId);
     }
 
-    @Override
-    public Project addMemberToProject(Long personId, Long projectId) {
-        Person existingPerson = personRepository.findById(personId).get();
-        Project existingProject = projectRepository.findById(projectId).get();
-        // TODO: atrelar pessoa a projeto
-        return null;
-    }
 
 }
