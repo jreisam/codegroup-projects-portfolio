@@ -7,12 +7,17 @@ import { AppComponent } from './app.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { PersonService } from './service/person.service';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectFormComponent } from './project-form/project-form.component';
+import { ProjectService } from './service/project.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonListComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    ProjectListComponent,
+    ProjectFormComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,7 @@ import { PersonService } from './service/person.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [PersonService],
+  providers: [PersonService, ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
