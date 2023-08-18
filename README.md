@@ -14,7 +14,7 @@ STACK:
 * PostgreSQL
 * Docker
 
-Para Rodar:
+Para Rodar o Back-End:
 ---------------------            
 URL: (http://localhost:8080)
 * Containers: 
@@ -28,6 +28,14 @@ PostgreSQL, Apache Kafka: `docker compose up` em `.\src\main\resources\dockerfil
 
 * API DOCs (Swagger): `http://localhost:8080/swagger-ui` / `http://localhost:8080/v2/api-docs`
 * Collection Postman: `.\src\main\resources\restcollection\`
+\
+
+
+Para Rodar o Front-End:
+---------------------            
+URL: (http://localhost:4200)
+* Angular Web App: `ng serve --open` em `.\src\main\webapp\angularclient\`
+
 \
 Tecnologias usadas na implementação:
 \
