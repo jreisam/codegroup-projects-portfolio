@@ -2,18 +2,70 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
       <div class="form-group">
-        <label for="nome">Name</label>
+        <label for="nome">Nome</label>
         <input type="text" [(ngModel)]="project.nome" class="form-control" id="nome" name="nome" placeholder="Informe o nome"
           required #nome="ngModel">
       </div>
       <div [hidden]="!nome.pristine" class="alert alert-danger">campo "Nome" requerido</div>
+
       <div class="form-group">
         <label for="descricao">Descrição</label>
         <input type="text" [(ngModel)]="project.descricao" class="form-control" id="descricao" name="descricao" placeholder="Informe a descricao"
           required #descricao="ngModel">
         <div [hidden]="!descricao.pristine" class="alert alert-danger">campo "Descrição" requerido</div>
       </div>
+
+      <div class="form-group">
+        <label for="dataInicio">Data de Início</label>
+        <input type="text" [(ngModel)]="project.dataInicio" class="form-control" id="dataInicio" name="dataInicio" placeholder="Informe a Data de Início"
+          required #dataInicio="ngModel">
+      </div>
+      <div [hidden]="!dataInicio.pristine" class="alert alert-danger">campo "Data de Inicio" requerido</div>
+
+      <div class="form-group">
+        <label for="dataPrevisaoFim">Data de Previsão de Término</label>
+        <input type="text" [(ngModel)]="project.dataPrevisaoFim" class="form-control" id="dataPrevisaoFim" name="dataPrevisaoFim" placeholder="Informe a Data de Previsao do Fim"
+          required #dataPrevisaoFim="ngModel">
+      </div>
+      <div [hidden]="!dataPrevisaoFim.pristine" class="alert alert-danger">campo "Data de Previsão de Fim" requerido</div>
+
+      <div class="form-group">
+        <label for="dataFim">Data de Fim</label>
+        <input type="text" [(ngModel)]="project.dataFim" class="form-control" id="dataFim" name="dataFim" placeholder="Informe a Data de Fim"
+          required #dataFim="ngModel">
+      </div>
+      <div [hidden]="!dataFim.pristine" class="alert alert-danger">campo "Data de Fim" requerido</div>
+
+      <div class="form-group">
+        <label for="idGerente">Id do Gerente</label>
+        <input type="number" [(ngModel)]="project.idGerente" class="form-control" id="idGerente" name="idGerente" placeholder="Informe Id do Gerente">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <input type="text" [(ngModel)]="project.status" class="form-control" id="status" name="status" placeholder="Informe o Status"
+          required #status="ngModel">
+      </div>
+      <div [hidden]="!status.pristine" class="alert alert-danger">campo "Status" requerido</div>
+
+      <div class="form-group">
+        <label for="risco">Risco</label>
+        <input type="text" [(ngModel)]="project.risco" class="form-control" id="risco" name="risco" placeholder="Informe o Risco"
+          required #risco="ngModel">
+      </div>
+      <div [hidden]="!risco.pristine" class="alert alert-danger">campo "Risco" requerido</div>
+
+
+      <div class="form-group">
+        <label for="orcamento">Orçamento</label>
+        <input type="number" [(ngModel)]="project.orcamento" class="form-control" id="orcamento" name="orcamento" placeholder="Informe o Orçamento"
+          required #orcamento="ngModel">
+      </div>
+      <div [hidden]="!orcamento.pristine" class="alert alert-danger">campo "Orçamento" requerido</div>
+
+
       <button type="submit" [disabled]="!projectForm.form.valid" class="btn btn-info">Submit</button>
+      
     </form>
   </div>
 </div>

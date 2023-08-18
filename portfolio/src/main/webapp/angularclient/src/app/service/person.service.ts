@@ -6,9 +6,13 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PersonService {
 
+  
   private personsUrl: string;
+  private personsToProjectUrl: string;
+  
 
   constructor(private http: HttpClient) {
+    this.personsToProjectUrl = 'http://localhost:8080/message/portfolio/membro';
     this.personsUrl = 'http://localhost:8080/person';
   }
 
@@ -17,6 +21,6 @@ export class PersonService {
   }
 
   public save(person: Person) {
-    return this.http.post<Person>(this.personsUrl, person);
+    return this.http.post<Person>(this.personsToProjectUrl, person);
   }
 }

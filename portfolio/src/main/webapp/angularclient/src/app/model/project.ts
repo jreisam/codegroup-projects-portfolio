@@ -7,7 +7,7 @@ export class Project {
     dataPrevisaoFim: string | undefined;
     dataFim: string | undefined;
     descricao: string | undefined;
-    gerente: Person | undefined;
+    idGerente: Person | undefined;
     status: string | undefined;
     risco: string | undefined;
     orcamento: string | undefined;
