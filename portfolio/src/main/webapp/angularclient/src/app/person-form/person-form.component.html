@@ -1,0 +1,19 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #personForm="ngForm">
+      <div class="form-group">
+        <label for="nome">Name</label>
+        <input type="text" [(ngModel)]="person.nome" class="form-control" id="nome" nome="nome" placeholder="Informe o nome"
+          required #nome="ngModel">
+      </div>
+      <div [hidden]="!nome.pristine" class="alert alert-danger">campo "Nome" requerido</div>
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" [(ngModel)]="person.cpf" class="form-control" id="cpf" nome="cpf" placeholder="Informe o cpf"
+          required #cpf="ngModel">
+        <div [hidden]="!cpf.pristine" class="alert alert-danger">campo "CPF" requerido</div>
+      </div>
+      <button type="submit" [disabled]="!personForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

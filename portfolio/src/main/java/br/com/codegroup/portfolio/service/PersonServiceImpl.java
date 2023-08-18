@@ -69,20 +69,20 @@ public class PersonServiceImpl implements PersonService {
         Optional<Person> personExistent = null;
         Project project = projectRepository.findById(projectMemberDto.getIdProjeto()).get();
         List<Project> projectList = new ArrayList<>();
-   //     Project project = projectService.getProjectById(projectMemberDto.getIdProjeto());
+        //     Project project = projectService.getProjectById(projectMemberDto.getIdProjeto());
         if (project != null) {
-            if(projectMemberDto.getIdPessoa() != null) {
+            if (projectMemberDto.getIdPessoa() != null) {
                 // verifica se pessoa já foi cadastrada
                 personExistent = personRepository.findById(projectMemberDto.getIdPessoa());
             }
             // caso positivo, a mantém no fluxo; caso negativo seta seus campos pelo Dto
             Person personAlreadyAdded = personExistent != null ? personExistent.get() : null;
             if (personAlreadyAdded != null) {
-                // seta então somente a nova informação se é funcionário ou não
-                personAdded.setFuncionario(projectMemberDto.isFuncionario());
+                // se pessoa já existe, somente adiciona ao projeto
                 personAdded.getProjetos().add(project);
+                personAdded = personRepository.save(personAdded);
             } else if (projectMemberDto.isFuncionario()) {
-                // mas sendo novo funcionário, faz-se então seu cadastro, seguido da atribuição de membro para o projeto informado
+                // mas sendo novo funcionário, cadastra seus dados, e então adiciona ao projeto
                 projectList.add(project);
                 personAdded.setFuncionario(projectMemberDto.isFuncionario());
                 personAdded.setNome(projectMemberDto.getNome());
@@ -90,8 +90,8 @@ public class PersonServiceImpl implements PersonService {
                 personAdded.setCargo(projectMemberDto.getCargo());
                 personAdded.setDataNascimento(projectMemberDto.getDataNascimento());
                 personAdded.setProjetos(projectList);
+                personAdded = personRepository.save(personAdded);
             }
-            personAdded =  personRepository.save(personAdded);
         }
 
         return personAdded;

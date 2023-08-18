@@ -36,9 +36,12 @@ public class Consumer {
         logger.info("message received using Kafka listener " + jsonString);
         try {
             Person personAdded = personService.addPersonToProject(projectMemberDto);
-
-            Project projectIncluded = projectService.getProjectById(projectMemberDto.getIdProjeto());
-            logger.info("novo membro " + personAdded.getNome() + " salvo com sucesso ao projeto " + projectIncluded.getNome());
+            if (personAdded != null) {
+                Project projectIncluded = projectService.getProjectById(projectMemberDto.getIdProjeto());
+                logger.info("novo membro " + personAdded.getNome() + " salvo com sucesso ao projeto " + projectIncluded.getNome());
+            } else {
+                logger.info("novo membro não é funcionário");
+            }
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
