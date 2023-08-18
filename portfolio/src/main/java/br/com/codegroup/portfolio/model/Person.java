@@ -23,7 +23,7 @@ public class Person extends BaseModel {
     private String nome;
     private Date dataNascimento;
     @Column(length = 14, unique = true)
-    private String cpf;
+    private Long cpf;
     private boolean funcionario;
     private String cargo;
 

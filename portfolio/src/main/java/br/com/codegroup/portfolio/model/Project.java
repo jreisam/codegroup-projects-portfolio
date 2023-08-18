@@ -41,7 +41,7 @@ public class Project extends BaseModel {
     @Column(length = 45)
     private ProjectRiskEnum risco;
     private Float orcamento;
-    @ManyToMany(mappedBy = "projetos")
+    @ManyToMany(mappedBy = "projetos", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Person> pessoas;
 
 

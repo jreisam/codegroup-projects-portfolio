@@ -12,12 +12,11 @@ import java.util.Date;
 public class ProjectMemberDto {
 
     private Long idProjeto;
-    private Long idPessoa;
     @Column(nullable = false)
     private String nome;
     private Date dataNascimento;
-    @Column(length = 14, unique = true)
-    private String cpf;
+    @Column(length = 14, unique = true, nullable = false)
+    private Long cpf;
     private String cargo;
     private boolean funcionario;
 
