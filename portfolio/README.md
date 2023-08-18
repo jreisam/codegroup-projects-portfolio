@@ -13,6 +13,7 @@ STACK:
 * Apache Kafka
 * PostgreSQL
 * Docker
+* Angular
 
 Para Rodar o Back-End:
 ---------------------            
