@@ -67,33 +67,43 @@ public class PersonServiceImpl implements PersonService {
     public Person addPersonToProject(@Valid ProjectMemberDto projectMemberDto) {
         Person personAdded = new Person();
         Optional<Person> personExistent = null;
-        Project project = projectRepository.findById(projectMemberDto.getIdProjeto()).get();
         List<Project> projectList = new ArrayList<>();
-   //     Project project = projectService.getProjectById(projectMemberDto.getIdProjeto());
-        if (project != null) {
-            if(projectMemberDto.getIdPessoa() != null) {
-                // verifica se pessoa já foi cadastrada
-                personExistent = personRepository.findById(projectMemberDto.getIdPessoa());
-            }
-            // caso positivo, a mantém no fluxo; caso negativo seta seus campos pelo Dto
-            Person personAlreadyAdded = personExistent != null ? personExistent.get() : null;
-            if (personAlreadyAdded != null) {
-                // seta então somente a nova informação se é funcionário ou não
-                personAdded.setFuncionario(projectMemberDto.isFuncionario());
-                personAdded.getProjetos().add(project);
-            } else if (projectMemberDto.isFuncionario()) {
-                // mas sendo novo funcionário, faz-se então seu cadastro, seguido da atribuição de membro para o projeto informado
-                projectList.add(project);
-                personAdded.setFuncionario(projectMemberDto.isFuncionario());
-                personAdded.setNome(projectMemberDto.getNome());
-                personAdded.setCpf(projectMemberDto.getCpf());
-                personAdded.setCargo(projectMemberDto.getCargo());
-                personAdded.setDataNascimento(projectMemberDto.getDataNascimento());
-                personAdded.setProjetos(projectList);
-            }
-            personAdded =  personRepository.save(personAdded);
-        }
 
+        try {
+            Project project = projectRepository.findById(projectMemberDto.getIdProjeto()).get();
+            //     Project project = projectService.getProjectById(projectMemberDto.getIdProjeto());
+            if (project != null) {
+                if (projectMemberDto.getCpf() != null) {
+                    // verifica se pessoa já foi cadastrada (Unique: CPF)
+                    personExistent = personRepository.findByCpf(projectMemberDto.getCpf());
+                    if (personExistent.isPresent()) {
+                        // verifica se pessoa já está em algum projeto
+                        List<Project> personProjects = projectRepository.findAllByPessoas_Id(personExistent.get().getId()).get();
+                        if (!personProjects.isEmpty()) {
+                            return personAdded;
+                        }
+                        // se pessoa já existe, somente adiciona ao projeto
+                        personAdded.getProjetos().add(project);
+                    }
+
+                }
+                if (projectMemberDto.isFuncionario()) {
+                    // mas sendo novo funcionário, cadastra seus dados, e então adiciona ao projeto
+                    projectList.add(project);
+                    personAdded.setFuncionario(projectMemberDto.isFuncionario());
+                    personAdded.setNome(projectMemberDto.getNome());
+                    personAdded.setCpf(projectMemberDto.getCpf());
+                    personAdded.setCargo(projectMemberDto.getCargo());
+                    personAdded.setDataNascimento(projectMemberDto.getDataNascimento());
+                    personAdded.setProjetos(projectList);
+                    personAdded = personRepository.save(personAdded);
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
         return personAdded;
     }
+
 }

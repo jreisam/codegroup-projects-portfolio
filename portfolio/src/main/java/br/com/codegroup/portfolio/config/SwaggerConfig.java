@@ -3,6 +3,7 @@ package br.com.codegroup.portfolio.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
@@ -29,8 +30,11 @@ public class SwaggerConfig {
                 .securityContexts(Arrays.asList(securityContext()))
                 .securitySchemes(Arrays.asList(apiKey()))
                 .select()
+                .apis( RequestHandlerSelectors.basePackage( "br.com.codegroup.portfolio" ) )
                 .paths(PathSelectors.any())
                 .build();
+
+
     }
 
     private ApiInfo apiInfo() {

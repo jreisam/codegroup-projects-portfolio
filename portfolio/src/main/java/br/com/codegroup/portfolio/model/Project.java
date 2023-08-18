@@ -2,7 +2,9 @@ package br.com.codegroup.portfolio.model;
 
 import br.com.codegroup.portfolio.enums.ProjectRiskEnum;
 import br.com.codegroup.portfolio.enums.ProjectStatusEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,9 +33,9 @@ public class Project extends BaseModel {
     private Date dataFim;
     @Column(length = 5000)
     private String descricao;
-    @ManyToOne
-    @JoinColumn(name = "projetoIdGerente", referencedColumnName = "id", nullable = true)
-    private Person gerente;
+    //    @ManyToOne
+//    @JoinColumn(name = "projetoIdGerente", referencedColumnName = "id", nullable = true)
+    private Long idGerente;
     @Enumerated
     @Column(length = 45)
     private ProjectStatusEnum status;
@@ -41,7 +43,7 @@ public class Project extends BaseModel {
     @Column(length = 45)
     private ProjectRiskEnum risco;
     private Float orcamento;
-    @ManyToMany(mappedBy = "projetos")
+    @ManyToMany(mappedBy = "projetos", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Person> pessoas;
 
 

@@ -16,7 +16,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/message")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MessageController {
 
     @Autowired
