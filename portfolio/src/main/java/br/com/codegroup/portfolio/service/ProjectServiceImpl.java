@@ -43,7 +43,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Project updateProject(Project project) {
         Project existingProject = projectRepository.findById(project.getId()).get();
         existingProject.setNome(project.getNome());
-        existingProject.setGerente(project.getGerente());
+        existingProject.setIdGerente(project.getIdGerente());
         existingProject.setDescricao(project.getDescricao());
         existingProject.setPessoas(project.getPessoas());
         existingProject.setOrcamento(project.getOrcamento());

@@ -1,0 +1,50 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #personForm="ngForm">
+      
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" [(ngModel)]="person.nome" class="form-control" id="nome" name="nome" placeholder="Informe o nome"
+          required #nome="ngModel">
+      </div>
+      <div [hidden]="!nome.pristine" class="alert alert-danger">campo "Nome" requerido</div>
+      
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="text" [(ngModel)]="person.cpf" class="form-control" id="cpf" name="cpf" placeholder="Informe o cpf"
+          required #cpf="ngModel">
+        <div [hidden]="!cpf.pristine" class="alert alert-danger">campo "CPF" requerido</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input type="text" [(ngModel)]="person.dataNascimento" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Informe Data de Nascimento"
+          required #dataNascimento="ngModel">
+        <div [hidden]="!dataNascimento.pristine" class="alert alert-danger">campo "Data de Nascimento" requerido</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="idProjeto">Id do Projeto</label>
+        <input type="number" [(ngModel)]="person.idProjeto" class="form-control" id="idProjeto" name="idProjeto" placeholder="Informe Id do Projeto"
+          required #idProjeto="ngModel">
+        <div [hidden]="!idProjeto.pristine" class="alert alert-danger">campo "Id do Projeto" requerido</div>
+      </div>
+           
+      <div class="form-group">
+        <label for="cargo">Cargo</label>
+        <input type="text" [(ngModel)]="person.cargo" class="form-control" id="cargo" name="cargo" placeholder="Informe o Cargo"
+          required #cargo="ngModel">
+        <div [hidden]="!cargo.pristine" class="alert alert-danger">campo "Cargo" requerido</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="funcionario">É Funcionário?</label>
+        <input type="checkbox" [(ngModel)]="person.funcionario" id="funcionario" name="funcionario" placeholder="Informe se é funcionario">
+      </div>
+      
+ 
+
+      <button type="submit" [disabled]="!personForm.form.valid" class="btn btn-info">Adicionar</button>
+    </form>
+  </div>
+</div>
